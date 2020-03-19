@@ -1,0 +1,11 @@
+select 1.0*(
+select count(*) from subscriptions where subscription_start < '2017-01-01' 
+and (subscription_end between '2017-01-01' and '2017-01-31')
+)/
+(
+select count(*) from subscriptions
+where subscription_start <'2017-01-01' and (
+  (subscription_end >= '2017-01-01')
+  or
+  (subscription_end is null)))
+as churn_rate;
