@@ -37,4 +37,4 @@ status_aggregate AS
   SUM(is_canceled) as canceled
 FROM status
 GROUP BY month)
-select 1.0 * canceled/active from status_aggregate;
+select 1.0 * canceled/active as churn_ratefrom status_aggregate;
